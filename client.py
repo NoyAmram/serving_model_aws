@@ -4,7 +4,7 @@ import requests
 
 PREDICT_FILE = "preds.csv"
 TEST_FILE = "X_test.csv"
-HOME = 'http://127.0.0.1:8080/predict_churn'
+HOME = 'ec2-3-74-155-27.eu-central-1.compute.amazonaws.com:8080'
 NUM_OBSERVATIONS = 5
 
 
