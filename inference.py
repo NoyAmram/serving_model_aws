@@ -4,8 +4,6 @@ import pandas as pd
 from flask import Flask, request
 
 MODEL_FILE = "churn_model.pkl"
-PREDICT_FILE = "preds.csv"
-TEST_FILE = "X_test.csv"
 
 app = Flask(__name__)
 
@@ -19,18 +17,6 @@ def read_model(file_name):
         global clf
         clf = pickle.load(f)
     return clf
-
-
-def read_test_data(test_file):
-    """ :param test_file for test data as csv
-        :returns DataFrame of test data"""
-    return pd.read_csv(test_file, encoding="utf-8")
-
-
-def read_predictions(prediction_file):
-    """ :param prediction_file for prediction saved in train module
-        :returns numpy array of the predictions """
-    return np.loadtxt(prediction_file, delimiter=',')
 
 
 def predict(data):
@@ -57,12 +43,8 @@ def get_forecast():
 def main():
     """ starting function to call above functions and verify prediction results"""
     read_model(MODEL_FILE)
-    X_test = read_test_data(TEST_FILE)
-    predictions = read_predictions(PREDICT_FILE)
-    forcast = predict(X_test)
-    assert (forcast == predictions).all()
 
 
 if __name__ == '__main__':
     main()
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
