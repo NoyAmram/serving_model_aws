@@ -1,9 +1,9 @@
 import pickle
-import numpy as np
 import pandas as pd
 from flask import Flask, request
 
 MODEL_FILE = "churn_model.pkl"
+AWS_PORT = 8080
 
 app = Flask(__name__)
 
@@ -47,4 +47,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=AWS_PORT, debug=True)
