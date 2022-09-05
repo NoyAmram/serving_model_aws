@@ -25,7 +25,7 @@ def predict(data):
     return clf.predict(data)
 
 
-@app.route('/predict_churn')
+@app.route('/')
 def get_forecast():
     """receives inputs for a single prediction as parameters
     returns a single prediction as a string."""
